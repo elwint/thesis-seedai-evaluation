@@ -1,0 +1,32 @@
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 518754934
+INFO: Loaded 1 modules   (9631 inline 8-bit counters): 9631 [0x5575084f2270, 0x5575084f480f), 
+INFO: Loaded 1 PC tables (9631 PCs): 9631 [0xc000080000,0xc0000a59f0), 
+INFO:       10 files found in corpus
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: seed corpus: files: 10 min: 3b max: 395b total: 1729b rss: 33Mb
+panic: unexpected script tag
+
+goroutine 17 [running, locked to thread]:
+git.ultraware.nl/iddinkgroep/fundament-api.Fuzz({0xc0002cc960?, 0x55750a1207b0?})
+	git.ultraware.nl/iddinkgroep/fundament-api/fuzz.go:16 +0x1df
+git.ultraware.nl/iddinkgroep/fundament-api.Fuzz_(...)
+	git.ultraware.nl/iddinkgroep/fundament-api/fuzz.117991057.go:6
+main.LLVMFuzzerTestOneInput(...)
+	./main.336014406.go:21
+==20372== ERROR: libFuzzer: deadly signal
+    #0 0x5575078b6630 in __sanitizer_print_stack_trace (/seedai/experiments/libfuzzer/libfuzzer+0xd2630) (BuildId: 1381b566b7c36f9298cffa5564178cba7a3a19a2)
+    #1 0x557507882755 in fuzzer::PrintStackTrace() (/seedai/experiments/libfuzzer/libfuzzer+0x9e755) (BuildId: 1381b566b7c36f9298cffa5564178cba7a3a19a2)
+    #2 0x5575078613a9 in fuzzer::Fuzzer::CrashCallback() (.part.0) FuzzerLoop.cpp.o
+    #3 0x55750786146a in fuzzer::Fuzzer::StaticCrashSignalCallback() (/seedai/experiments/libfuzzer/libfuzzer+0x7d46a) (BuildId: 1381b566b7c36f9298cffa5564178cba7a3a19a2)
+    #4 0x7f039d9fb70f  (/usr/lib/libc.so.6+0x3e70f) (BuildId: 316d0d3666387f0e8fb98773f51aa1801027c5ab)
+    #5 0x55750791ac80 in runtime.raise.abi0 runtime/sys_linux_amd64.s:153
+
+NOTE: libFuzzer has rudimentary signal handlers.
+      Combine libFuzzer with AddressSanitizer or similar for better crash reports.
+SUMMARY: libFuzzer: deadly signal
+MS: 0 ; base unit: 0000000000000000000000000000000000000000
+0x26,0x6c,0x74,0x3b,0x73,0x63,0x72,0x69,0x70,0x74,0x26,0x67,0x74,0x3b,0x26,0x6c,0x74,0x3b,0x2f,0x73,0x63,0x72,0x69,0x70,0x74,0x26,0x67,0x74,0x3b,0x26,0x6c,0x74,0x3b,0x5c,0x2f,0x73,0x63,0x72,0x69,0x70,0x74,0x26,0x67,0x74,0x3b,0x26,0x6c,0x74,0x3b,0x5c,0x2f,0x73,0x74,0x79,0x6c,0x65,0x26,0x67,0x74,0x3b,0x26,0x6c,0x74,0x3b,0x73,0x63,0x72,0x69,0x70,0x74,0x26,0x67,0x74,0x3b,0x26,0x6c,0x74,0x3b,0x2f,0x73,0x63,0x72,0x69,0x70,0x74,0x26,0x67,0x74,0x3b,
+&lt;script&gt;&lt;/script&gt;&lt;\\/script&gt;&lt;\\/style&gt;&lt;script&gt;&lt;/script&gt;
+artifact_prefix='./'; Test unit written to ./crash-47f9e855f6f70882dcdcd76524dc6e2fbb21a517
+Base64: Jmx0O3NjcmlwdCZndDsmbHQ7L3NjcmlwdCZndDsmbHQ7XC9zY3JpcHQmZ3Q7Jmx0O1wvc3R5bGUmZ3Q7Jmx0O3NjcmlwdCZndDsmbHQ7L3NjcmlwdCZndDs=

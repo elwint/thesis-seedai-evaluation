@@ -1,0 +1,1 @@
+A bug input would be a byte slice where the length of the decompressed version is more than 100 times greater than that of the compressed version. It could also be an invalid or corrupted compressed data which would cause `flate.NewReader` to fail and trigger panic in `Decompress` function.

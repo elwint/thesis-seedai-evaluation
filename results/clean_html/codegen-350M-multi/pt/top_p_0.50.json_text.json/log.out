@@ -1,0 +1,32 @@
+INFO: Running with entropic power schedule (0xFF, 100).
+INFO: Seed: 166591964
+INFO: Loaded 1 modules   (9631 inline 8-bit counters): 9631 [0x559d9b7ef270, 0x559d9b7f180f), 
+INFO: Loaded 1 PC tables (9631 PCs): 9631 [0xc000080000,0xc0000a59f0), 
+INFO:        8 files found in corpus
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+INFO: seed corpus: files: 8 min: 4b max: 39b total: 140b rss: 33Mb
+panic: unexpected script tag
+
+goroutine 17 [running, locked to thread]:
+git.ultraware.nl/iddinkgroep/fundament-api.Fuzz({0xc0002abf00?, 0x559d9c21db20?})
+	git.ultraware.nl/iddinkgroep/fundament-api/fuzz.go:16 +0x1df
+git.ultraware.nl/iddinkgroep/fundament-api.Fuzz_(...)
+	git.ultraware.nl/iddinkgroep/fundament-api/fuzz.1564991230.go:6
+main.LLVMFuzzerTestOneInput(...)
+	./main.281461698.go:21
+==4393== ERROR: libFuzzer: deadly signal
+    #0 0x559d9abb3630 in __sanitizer_print_stack_trace (/seedai/experiments/libfuzzer/source_clean_html/libfuzzer+0xd2630) (BuildId: d90bef6f09e3e624333610ebdf4ab8552e095b2f)
+    #1 0x559d9ab7f755 in fuzzer::PrintStackTrace() (/seedai/experiments/libfuzzer/source_clean_html/libfuzzer+0x9e755) (BuildId: d90bef6f09e3e624333610ebdf4ab8552e095b2f)
+    #2 0x559d9ab5e3a9 in fuzzer::Fuzzer::CrashCallback() (.part.0) FuzzerLoop.cpp.o
+    #3 0x559d9ab5e46a in fuzzer::Fuzzer::StaticCrashSignalCallback() (/seedai/experiments/libfuzzer/source_clean_html/libfuzzer+0x7d46a) (BuildId: d90bef6f09e3e624333610ebdf4ab8552e095b2f)
+    #4 0x7f1d6b56a70f  (/usr/lib/libc.so.6+0x3e70f) (BuildId: 316d0d3666387f0e8fb98773f51aa1801027c5ab)
+    #5 0x559d9ac17c80 in runtime.raise.abi0 runtime/sys_linux_amd64.s:153
+
+NOTE: libFuzzer has rudimentary signal handlers.
+      Combine libFuzzer with AddressSanitizer or similar for better crash reports.
+SUMMARY: libFuzzer: deadly signal
+MS: 0 ; base unit: 0000000000000000000000000000000000000000
+0x26,0x6c,0x74,0x3b,0x73,0x63,0x72,0x69,0x70,0x74,0x26,0x67,0x74,0x3b,0x26,0x6c,0x74,0x3b,0x2f,0x73,0x63,0x72,0x69,0x70,0x74,0x26,0x67,0x74,0x3b,
+&lt;script&gt;&lt;/script&gt;
+artifact_prefix='./'; Test unit written to ./crash-b32ba2bc50c230b223e992001484e99b2524a416
+Base64: Jmx0O3NjcmlwdCZndDsmbHQ7L3NjcmlwdCZndDs=

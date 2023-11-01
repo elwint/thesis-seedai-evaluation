@@ -1,0 +1,1 @@
+A potential bug input could be an empty byte slice (`[]byte{}`). This would cause a division by zero error in the line `if len(decompressed)/len(compressed) > 100 {...}` because you can't divide by 0. Another problematic input might be a corrupted or non-deflate compressed byte array, which would cause the `Decompress` function to panic when it fails to decompress the data.

@@ -1,0 +1,1 @@
+Given that the `Fuzz` function panics when the decompressed length is more than 100 times the compressed length, a bug input would be a byte slice which expands to more than 100 times its size upon decompression. However, creating such an input requires knowledge of how the flate algorithm works and how it can be exploited to create such extreme compression ratios.

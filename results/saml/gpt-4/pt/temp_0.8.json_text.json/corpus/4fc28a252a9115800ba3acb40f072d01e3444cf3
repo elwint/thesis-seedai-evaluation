@@ -1,0 +1,1 @@
+A bug input could be a compressed byte array that decompresses to more than 100 times its original size, triggering the 'too high ratio' panic in the Fuzz function. Given that flate compression isn't designed to cause such extreme ratios normally, generating this input might require carefully crafted or malformed data.

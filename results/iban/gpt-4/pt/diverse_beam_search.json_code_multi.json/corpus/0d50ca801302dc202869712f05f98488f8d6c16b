@@ -1,0 +1,8 @@
+Here are few potential bugs that could be in your system, and the unit test cases for them:
+
+1. If input v is empty string
+  ```go
+   func TestFuzz_EmptyInput(t *testing.T) {
+       res := Fuzz("")
+       assert.Equal(t, -1,res)
+   

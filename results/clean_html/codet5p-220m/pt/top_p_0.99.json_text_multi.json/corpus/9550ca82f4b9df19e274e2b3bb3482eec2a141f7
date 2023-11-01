@@ -1,0 +1,17 @@
+ tags which aren't allowed to be sanitized
+					break
+				}
+			}
+
+		default:
+			if i, ok := p.errors[token.Data]; ok {
+				error := i.(error)
+				err := error.(error).Marshal(w)
+				err = p.errors[token.Data] = err
+			}
+		}
+	}
+
+	return nil
+}
+
