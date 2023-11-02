@@ -145,7 +145,7 @@ def count_lines(directory_path, model_path):
 
 	return counts, timeouts, time_sums, reached, reached_tsums, unexpected, instant, seeds_tsums, has_pt
 
-def save_config_to_csv(configs, sample_size, config_counts, config_time_sums, config_reached, config_reached_tsums, unexpected, instant, seeds_tsums, csv_filename='config-data.csv'):
+def save_config_to_csv(configs, sz, config_counts, config_time_sums, config_reached, config_reached_tsums, unexpected, instant, seeds_tsums, csv_filename='config-data.csv'):
 	with open(csv_filename, mode='w', newline='') as file:
 		writer = csv.writer(file)
 		writer.writerow(['config', 'triggered', 'triggered_avg_time', 'reached', 'reached_avg_time', 'unexpected', 'instant', 'seeds_avg_time'])  # Writing the header
@@ -154,6 +154,10 @@ def save_config_to_csv(configs, sample_size, config_counts, config_time_sums, co
 				triggered_avg_time = 'N/A'
 			else:
 				triggered_avg_time = round(config_time_sums[config] / config_counts[config], 2)
+
+			sample_size = sz
+			# if config == 'diverse_beam_search.json':
+			# 	sample_size = 3
 
 			reached_perc = 100
 			if config_reached[config] != sample_size:
@@ -168,8 +172,13 @@ def save_config_to_csv(configs, sample_size, config_counts, config_time_sums, co
 
 			writer.writerow([config.replace("_", "\\_"), config_counts[config], f"{triggered_avg_time} s", f"{reached_perc}\\%", f"{reached_avg_time} ms", unexpected[config], instant[config], f"{seeds_avg_time} s"])
 
-def check_counts(configs, sample_size, counts, timeouts):
+def check_counts(configs, sz, counts, timeouts):
 	for config in configs:
+
+		sample_size = sz
+		# if config == 'diverse_beam_search.json':
+		# 	sample_size = 3
+
 		total = counts[config] + timeouts[config]
 		if total != sample_size:
 			raise Exception(f"Missing result for {config}, the total of DONE and TIMEDOUT is {total}, not sample size {sample_size}.")

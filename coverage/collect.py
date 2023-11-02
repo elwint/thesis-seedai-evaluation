@@ -33,8 +33,13 @@ def process_folder(folder_path):
 			cov_index = 1
 			if subfolder == 'iban': # Use features for iban
 				cov_index = 2
+
+			final_rel_time = (end_time - start_time).total_seconds()
+
 			with open(os.path.join(root, 'cov.out'), 'r') as f:
 				lines = f.readlines()
+				if len(lines) == 0:
+					rel_time = final_rel_time
 				for line in lines:
 					time_str, cov_info = line.split(',')[0], line.split(',')[cov_index]
 					time = datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S.%f')
@@ -49,7 +54,6 @@ def process_folder(folder_path):
 						last_cov = cov
 
 			# Add final entry based on the done time
-			final_rel_time = (end_time - start_time).total_seconds()
 			if final_rel_time < rel_time:
 				print(f"Warning: final rel time < last rel time for {root}")
 				print(f"Warning: diff: {rel_time - final_rel_time}")
